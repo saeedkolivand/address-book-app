@@ -1,0 +1,3 @@
+src/app/reportWebVitals.ts
+src/app/serviceWorkerRegistration.ts
+src/app/service-worker.ts
