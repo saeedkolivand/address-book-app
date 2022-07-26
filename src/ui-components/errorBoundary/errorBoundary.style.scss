@@ -1,0 +1,14 @@
+@import "../../assets/styles/variables";
+
+.error-boundary-wrapper {
+  margin-top: 20vh;
+  flex-direction: column;
+
+  .error-boundary-wrapper--text {
+  }
+
+  .error-boundary-wrapper--button {
+    width: 90%;
+    margin-top: $largeSize;
+  }
+}

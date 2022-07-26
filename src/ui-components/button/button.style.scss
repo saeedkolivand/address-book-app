@@ -1,0 +1,26 @@
+@import "../../assets/styles/variables";
+
+.button-wrapper {
+  background: rgba(45, 132, 251, 0.1);
+  border-radius: $mediumSize;
+  width: 48px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: 150ms;
+
+  &:hover {
+    transition: unset;
+  }
+
+  &:active {
+    transition: 150ms;
+    box-shadow: 0 0 7px rgba(45, 132, 251, 0.3);
+  }
+
+  &:focus-visible {
+    outline: none !important;
+    border: none !important;
+  }
+}

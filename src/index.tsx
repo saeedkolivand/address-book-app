@@ -1,16 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import * as serviceWorkerRegistration from "app/serviceWorkerRegistration";
+import reportWebVitals from "app/reportWebVitals";
+import AppRouter from "routes/AppRouter";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import store from "app/redux/store";
+import { Provider } from "react-redux";
+import ErrorBoundary from "ui-components/errorBoundary/ErrorBoundary";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <AppRouter />
+        </QueryClientProvider>
+      </Provider>
+    </ErrorBoundary>
   </React.StrictMode>
 );
 

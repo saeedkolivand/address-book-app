@@ -1,0 +1,72 @@
+@import "../../assets/styles/variables";
+
+.loading-background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+  background-color: #000;
+  top: 0;
+
+  &.show-loading {
+    visibility: visible;
+    opacity: 0.5;
+    transition: visibility 0s linear 0s, opacity 300ms;
+  }
+
+  &.hide-loading {
+    visibility: hidden;
+    opacity: 0;
+    z-index: unset;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+  }
+}
+
+.loading-wrapper {
+  position: fixed;
+  width: 250px;
+  height: 100vh;
+  z-index: 999;
+  overflow: hidden;
+  overflow-y: auto;
+  top: 0;
+
+  &.show-loading {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
+  }
+  &.hide-loading {
+    visibility: hidden;
+    opacity: 0;
+    z-index: unset;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+  }
+
+  .loading-wrapper--loading-body {
+    width: 100px;
+    height: 70px;
+    top: 35%;
+    color: #000;
+    border-radius: $mediumSize;
+    background-color: #fff;
+
+    .loading-wrapper--loading-body__spinner {
+      border: 4px solid #1b2328;
+      border-top: 4px solid #33bec8;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 2s linear infinite;
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}
