@@ -1,0 +1,31 @@
+@import "../../assets/styles/variables";
+
+.users-list-wrapper {
+  width: 100%;
+  justify-content: space-between;
+  border-radius: $smallSize;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: $mediumSize;
+  }
+
+  .users-list-wrapper__header {
+    padding: $largeSize $mediumSize;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
+
+    .users-list-wrapper__header--item {
+      width: 20%;
+      color: #596579;
+      font-size: 15px;
+      font-weight: 500;
+
+      @media (max-width: 800px) {
+        display: none;
+      }
+    }
+  }
+}

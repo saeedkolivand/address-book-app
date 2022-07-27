@@ -18,7 +18,16 @@ const Home: React.FC<HomePropsTypes> = () => {
           : "Something went wrong"
       }
     >
-      <UsersList usersList={data?.data.results} />
+      <UsersList
+        usersList={data?.data.results}
+        headerItems={[
+          "Picture",
+          "First Name",
+          "Last Name",
+          "Username",
+          "Email",
+        ]}
+      />
     </Container>
   );
 };

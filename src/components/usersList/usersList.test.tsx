@@ -6,7 +6,18 @@ describe("RepositoryList test cases", () => {
   afterAll(cleanup);
 
   it("should render two items in list", () => {
-    render(<UsersList usersList={mockedApiResponse} />);
+    render(
+      <UsersList
+        usersList={mockedApiResponse}
+        headerItems={[
+          "Picture",
+          "First Name",
+          "Last Name",
+          "Username",
+          "Email",
+        ]}
+      />
+    );
 
     const repositoryElement = screen.getAllByLabelText("user-card-wrapper");
 
