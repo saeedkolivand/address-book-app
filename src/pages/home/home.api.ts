@@ -4,7 +4,7 @@ const API = "/";
 
 export const getUsersListApi = () => {
   const params = {
-    results: 25,
+    results: 1000,
   };
 
   return HttpService.get(`${API}`, { params });
