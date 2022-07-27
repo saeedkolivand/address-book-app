@@ -32,7 +32,7 @@ export interface UsersDto {
 }
 
 export interface Dob {
-  date: Date;
+  date: string;
   age: number;
 }
 

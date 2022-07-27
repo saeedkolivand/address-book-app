@@ -8,6 +8,6 @@ import {
 
 export const useUsersList = () =>
   useQuery<
-    | AxiosResponse<UsersListApiResponseTypes>
-    | AxiosError<UsersListApiErrorResponseTypes>
+    AxiosResponse<UsersListApiResponseTypes>,
+    AxiosError<UsersListApiErrorResponseTypes>
   >(["usersList"], getUsersListApi);

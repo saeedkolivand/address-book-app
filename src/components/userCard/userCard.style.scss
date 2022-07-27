@@ -1,0 +1,26 @@
+@import "../../assets/styles/variables";
+
+.user-card-wrapper {
+  width: 100%;
+  justify-content: space-between;
+  padding: $largeSize;
+  border-radius: $smallSize;
+  box-shadow: 0 0 10px 0 #0000001a;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: $mediumSize;
+  }
+
+  .user-card-wrapper__picture,
+  .user-card-wrapper__first-name,
+  .user-card-wrapper__last-name,
+  .user-card-wrapper__username,
+  .user-card-wrapper__email {
+    width: 20%;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+  }
+}
