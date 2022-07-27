@@ -5,6 +5,7 @@ import Loading from "ui-components/loading/Loading";
 import NotFound from "ui-components/notFound/NotFound";
 import { HomeRoutes } from "pages/home/home.route";
 import { AppRouterTypes } from "./appRouter.types";
+import "assets/styles/_global.scss";
 
 export const appRoutes: AppRouterTypes[] = [
   ...HomeRoutes,
