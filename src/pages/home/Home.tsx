@@ -35,6 +35,7 @@ const Home: React.FC<HomePropsTypes> = () => {
     >
       <Input
         value={searchValue}
+        onClear={() => setSearchValue("")}
         onChange={handleSearchValue}
         placeholder="Search Users..."
       />

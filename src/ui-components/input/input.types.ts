@@ -1,3 +1,5 @@
 import React from "react";
 
-export interface InputPropsTypes extends React.HTMLProps<HTMLInputElement> {}
+export interface InputPropsTypes extends React.HTMLProps<HTMLInputElement> {
+  onClear?: () => void;
+}
