@@ -1,5 +1,5 @@
 import React from "react";
-import Divider from "ui-components/divider/Divider";
+import { Divider } from "ui-components";
 import { UsersListPropsTypes } from "./usersList.types";
 import UserCard from "../userCard/UserCard";
 import "./usersList.style.scss";

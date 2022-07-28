@@ -1,8 +1,7 @@
 import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Loading from "ui-components/loading/Loading";
-import NotFound from "ui-components/notFound/NotFound";
+import { NotFound, Loading } from "ui-components";
 import { HomeRoutes } from "pages/home/home.route";
 import { AppRouterTypes } from "./appRouter.types";
 import "assets/styles/_global.scss";

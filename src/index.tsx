@@ -6,7 +6,7 @@ import AppRouter from "routes/AppRouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import store from "app/redux/store";
 import { Provider } from "react-redux";
-import ErrorBoundary from "ui-components/errorBoundary/ErrorBoundary";
+import { ErrorBoundary } from "ui-components";
 
 const queryClient = new QueryClient({
   defaultOptions: {

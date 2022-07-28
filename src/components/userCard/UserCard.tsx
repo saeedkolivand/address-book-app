@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import Image from "ui-components/image/Image";
+import { Image } from "ui-components";
 import { UserCardPropsTypes } from "./userCard.types";
 import "./userCard.style.scss";
 
