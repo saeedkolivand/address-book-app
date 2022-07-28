@@ -8,6 +8,10 @@
   @media (max-width: 800px) {
     flex-direction: column;
     gap: $mediumSize;
+
+    .divider {
+      display: none;
+    }
   }
 
   .users-list-wrapper__header {

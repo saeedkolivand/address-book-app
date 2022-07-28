@@ -17,7 +17,7 @@
   .user-card-wrapper__username,
   .user-card-wrapper__email {
     width: 20%;
-    font-size: 14px;
+    font-size: $fontSize;
     word-break: break-all;
 
     @media (max-width: 800px) {

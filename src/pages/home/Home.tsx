@@ -1,12 +1,27 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import "./home.style.scss";
-import { Container, Input, Divider } from "ui-components";
+import { Container, Divider, Input } from "ui-components";
 import UsersList from "components/usersList/UsersList";
+import useDebounce from "app/hooks/UseDebounce";
 import { HomePropsTypes } from "./home.types";
-import { useUsersList } from "./home.hooks";
+import { useFilterUsersList, useUsersList } from "./home.hooks";
 
 const Home: React.FC<HomePropsTypes> = () => {
-  const { data, isLoading, error, isError } = useUsersList();
+  const [searchValue, setSearchValue] = useState("");
+
+  const debouncedValue = useDebounce(searchValue, 500);
+  const { data, isLoading, error, isError } = useUsersList({
+    page: 1,
+    results: 10,
+    inc: "name,nat,email,picture,login,cell",
+  });
+  const [filteredResult] = useFilterUsersList(
+    data?.data.results!,
+    debouncedValue
+  );
+
+  const handleSearchValue = (event: ChangeEvent<HTMLInputElement>) =>
+    setSearchValue(event.target.value);
 
   return (
     <Container
@@ -18,10 +33,16 @@ const Home: React.FC<HomePropsTypes> = () => {
           : "Something went wrong"
       }
     >
-      <Input />
+      <Input
+        value={searchValue}
+        onChange={handleSearchValue}
+        placeholder="Search Users..."
+      />
+
       <Divider />
+
       <UsersList
-        usersList={data?.data.results}
+        usersList={filteredResult || data?.data.results}
         headerItems={[
           "Picture",
           "First Name",

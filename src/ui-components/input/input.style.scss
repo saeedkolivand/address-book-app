@@ -3,10 +3,8 @@
 .todo-input {
   width: 100%;
   border: 1px solid #e6eaf0;
-  font-weight: 400;
   border-radius: $mediumSize;
-  height: 24px;
-  font-size: 1.1em;
+  font-size: $fontSize;
   color: #1b252f;
   transition: 200ms ease-in-out;
   padding: $mediumSize 16px 14px;
