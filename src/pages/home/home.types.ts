@@ -8,6 +8,11 @@ export interface HomeApiParamsTypes {
   inc?: string;
 }
 
+export type useFilterUsersListHookTypes = (
+  usersList: UsersDto[],
+  searchValue: string
+) => [UsersDto[], string];
+
 export interface UsersListApiErrorResponseTypes {
   error: string;
 }

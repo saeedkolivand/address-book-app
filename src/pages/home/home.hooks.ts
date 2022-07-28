@@ -3,6 +3,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { getUsersListApi } from "./home.api";
 import {
   HomeApiParamsTypes,
+  useFilterUsersListHookTypes,
   UsersDto,
   UsersListApiErrorResponseTypes,
   UsersListApiResponseTypes,
@@ -16,13 +17,14 @@ export const useUsersList = (params: HomeApiParamsTypes) =>
     getUsersListApi(queryKey[1] as HomeApiParamsTypes)
   );
 
-export const useFilterUsersList: (
+export const useFilterUsersList: useFilterUsersListHookTypes = (
   usersList: UsersDto[],
   searchValue: string
-) => [UsersDto[], string] = (usersList: UsersDto[], searchValue: string) => {
+) => {
   const filteredResult = usersList?.filter((user) => {
     const name = `${user.name.first} ${user.name.last}`;
     return name.toLowerCase().includes(searchValue.toLowerCase());
   });
+
   return [filteredResult, searchValue];
 };
