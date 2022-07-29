@@ -33,7 +33,6 @@ export interface UsersDto {
   login: Login;
   picture: Picture;
   nat: Nat;
-  cell: string;
 }
 
 export interface Login {

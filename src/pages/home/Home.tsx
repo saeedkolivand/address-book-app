@@ -15,7 +15,7 @@ const Home: React.FC<HomePropsTypes> = () => {
   const { data, isLoading, error, isError } = useUsersList({
     page: pageNumber,
     results: 50,
-    inc: "name,nat,email,picture,login,cell",
+    inc: "name,nat,email,picture,login",
   });
 
   const { filterResult } = useFilterUsersList(
@@ -42,31 +42,36 @@ const Home: React.FC<HomePropsTypes> = () => {
           ? error.response?.data.error
           : "Something went wrong"
       }
+      className="home-wrapper"
     >
-      <Input
-        value={searchValue}
-        onClear={handleClearSearchValue}
-        onChange={handleSearchValue}
-        placeholder="Search Users..."
-        style={{
-          border: (filterResult?.length > 0 && "1px solid #38C775") || "",
-        }}
-      />
+      <section className="home-wrapper__search absolute-center">
+        <Input
+          value={searchValue}
+          onClear={handleClearSearchValue}
+          onChange={handleSearchValue}
+          placeholder="Search Users..."
+          style={{
+            border: (filterResult?.length > 0 && "1px solid #38C775") || "",
+          }}
+        />
 
-      <Divider />
+        <Divider />
+      </section>
 
-      <UsersList
-        headerItems={[
-          "Picture",
-          "First Name",
-          "Last Name",
-          "Username",
-          "Email",
-        ]}
-        usersList={filterResult?.length ? filterResult : data?.data.results}
-        onUpdatePageNumber={handleUpdatePageNumber}
-        isFirstPage={pageNumber === 1 || filterResult?.length > 0}
-      />
+      <section className="home-wrapper__users-list">
+        <UsersList
+          headerItems={[
+            "Picture",
+            "First Name",
+            "Last Name",
+            "Username",
+            "Email",
+          ]}
+          usersList={filterResult?.length ? filterResult : data?.data.results}
+          onUpdatePageNumber={handleUpdatePageNumber}
+          isFirstPage={pageNumber === 1 || filterResult?.length > 0}
+        />
+      </section>
     </Container>
   );
 };

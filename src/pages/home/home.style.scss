@@ -1,2 +1,26 @@
+@import "../../assets/styles/variables.scss";
+
 .home-wrapper {
+  position: relative;
+
+  .home-wrapper__search {
+    background-color: #fff;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: calc($largeSize * 4);
+    padding-top: $largeSize;
+    padding-left: $largeSize;
+    padding-right: $largeSize;
+
+    .divider {
+      margin-top: $largeSize;
+    }
+  }
+
+  .home-wrapper__users-list {
+    padding-top: calc($largeSize + 24px);
+    margin-top: calc($largeSize + 24px);
+  }
 }
