@@ -13,18 +13,22 @@ export const useUsersList = (params: HomeApiParamsTypes) =>
   useQuery<
     AxiosResponse<UsersListApiResponseTypes>,
     AxiosError<UsersListApiErrorResponseTypes>
-  >(["usersList", params], ({ queryKey }) =>
+  >(["fetchUsersList", params], ({ queryKey }) =>
     getUsersListApi(queryKey[1] as HomeApiParamsTypes)
   );
 
 export const useFilterUsersList: useFilterUsersListHookTypes = (
   usersList: UsersDto[],
-  searchValue: string
+  searchValue?: string
 ) => {
-  const filteredResult = usersList?.filter((user) => {
+  if (!searchValue) {
+    return { filterResult: [] };
+  }
+
+  const filterResult = usersList?.filter((user) => {
     const name = `${user.name.first} ${user.name.last}`;
     return name.toLowerCase().includes(searchValue.toLowerCase());
   });
 
-  return [filteredResult, searchValue];
+  return { filterResult };
 };

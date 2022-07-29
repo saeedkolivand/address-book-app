@@ -16,6 +16,8 @@ describe("RepositoryList test cases", () => {
           "Username",
           "Email",
         ]}
+        onUpdatePageNumber={() => {}}
+        isFirstPage
       />
     );
 

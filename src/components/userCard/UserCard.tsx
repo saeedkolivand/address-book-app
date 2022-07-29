@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React from "react";
 import { Image } from "ui-components";
-import { UserCardPropsTypes } from "./userCard.types";
 import "./userCard.style.scss";
+import { UserCardPropsTypes } from "./userCard.types";
 
 const UserCard: React.FC<UserCardPropsTypes> = (props) => {
   const { picture, name, email, login } = props;
@@ -32,4 +32,4 @@ const UserCard: React.FC<UserCardPropsTypes> = (props) => {
   );
 };
 
-export default memo(UserCard);
+export default UserCard;

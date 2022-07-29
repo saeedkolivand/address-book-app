@@ -1,11 +1,28 @@
-import React, { memo, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import "./usersList.style.scss";
 import { Divider } from "ui-components";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { UsersDto } from "pages/home/home.types";
 import { UsersListPropsTypes } from "./usersList.types";
 import UserCard from "../userCard/UserCard";
-import "./usersList.style.scss";
 
 const UsersList: React.FC<UsersListPropsTypes> = (props) => {
-  const { usersList, headerItems } = props;
+  const {
+    usersList = [],
+    headerItems,
+    onUpdatePageNumber,
+    isFirstPage,
+  } = props;
+
+  const [list, setList] = useState<UsersDto[]>([]);
+
+  useEffect(() => {
+    if (usersList.length && !isFirstPage) {
+      return setList((prevState) => [...new Set([...prevState, ...usersList])]);
+    }
+
+    if (usersList.length && isFirstPage) setList(usersList);
+  }, [usersList]);
 
   const renderListHeader = useMemo(
     () =>
@@ -28,11 +45,19 @@ const UsersList: React.FC<UsersListPropsTypes> = (props) => {
 
       <Divider />
 
-      {usersList
-        ? usersList.map((item) => <UserCard {...item} key={item.cell} />)
-        : ""}
+      <InfiniteScroll
+        dataLength={list?.length}
+        next={onUpdatePageNumber}
+        loader={<div className="flex-center">Loading Users</div>}
+        hasMore={!list.length}
+        scrollThreshold={1}
+      >
+        {list?.map((item) => (
+          <UserCard {...item} key={item.login.uuid} />
+        ))}
+      </InfiniteScroll>
     </div>
   );
 };
 
-export default memo(UsersList);
+export default UsersList;
