@@ -12,6 +12,7 @@ const UsersList: React.FC<UsersListPropsTypes> = (props) => {
     headerItems,
     onUpdatePageNumber,
     isFirstPage,
+    isFilterActive,
   } = props;
 
   const [list, setList] = useState<UsersDto[]>([]);
@@ -48,8 +49,12 @@ const UsersList: React.FC<UsersListPropsTypes> = (props) => {
       <InfiniteScroll
         dataLength={list?.length}
         next={onUpdatePageNumber}
-        loader={<div className="flex-center">Loading Users</div>}
-        hasMore
+        loader={
+          <div className="flex-center">
+            {isFilterActive ? "" : "Loading Users"}
+          </div>
+        }
+        hasMore={!isFilterActive}
       >
         {list?.map((item) => (
           <UserCard {...item} key={item.login.uuid} />

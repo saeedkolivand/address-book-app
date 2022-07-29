@@ -68,6 +68,7 @@ const Home: React.FC<HomePropsTypes> = () => {
           usersList={filterResult?.length ? filterResult : data?.data.results}
           onUpdatePageNumber={handleUpdatePageNumber}
           isFirstPage={pageNumber === 1 || filterResult?.length > 0}
+          isFilterActive={filterResult?.length > 0}
         />
       </section>
     </Container>

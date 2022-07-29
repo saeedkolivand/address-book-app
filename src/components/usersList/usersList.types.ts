@@ -5,4 +5,5 @@ export interface UsersListPropsTypes {
   usersList?: UsersDto[];
   onUpdatePageNumber: () => void;
   isFirstPage: boolean;
+  isFilterActive: boolean;
 }
