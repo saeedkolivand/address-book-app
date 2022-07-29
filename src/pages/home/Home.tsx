@@ -23,8 +23,6 @@ const Home: React.FC<HomePropsTypes> = () => {
     debouncedValue
   );
 
-  console.log(data?.data.results);
-
   const handleUpdatePageNumber = () =>
     setPageNumber((prevState) => prevState + 1);
 

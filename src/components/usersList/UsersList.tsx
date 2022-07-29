@@ -49,8 +49,7 @@ const UsersList: React.FC<UsersListPropsTypes> = (props) => {
         dataLength={list?.length}
         next={onUpdatePageNumber}
         loader={<div className="flex-center">Loading Users</div>}
-        hasMore={!list.length}
-        scrollThreshold={1}
+        hasMore
       >
         {list?.map((item) => (
           <UserCard {...item} key={item.login.uuid} />

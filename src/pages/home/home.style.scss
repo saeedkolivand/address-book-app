@@ -1,8 +1,6 @@
 @import "../../assets/styles/variables.scss";
 
 .home-wrapper {
-  position: relative;
-
   .home-wrapper__search {
     background-color: #fff;
     position: fixed;
@@ -19,6 +17,7 @@
   }
 
   .home-wrapper__users-list {
+    width: 100%;
     padding-top: calc($largeSize + 24px);
     margin-top: calc($largeSize + 24px);
   }
