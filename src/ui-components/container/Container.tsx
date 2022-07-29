@@ -1,7 +1,6 @@
 import React from "react";
+import { Loading, Error } from "ui-components";
 import { ContainerPropsTypes } from "./container.types";
-import Loading from "../loading/Loading";
-import Error from "../error/Error";
 import "./container.style.scss";
 
 const Container: React.FC<ContainerPropsTypes> = (props) => {

@@ -7,7 +7,7 @@ const Error: React.FC<ErrorPropsTypes> = (props) => {
   const {
     hasError,
     callbackFunction,
-    errorMessage = "Error while submitting todo!",
+    errorMessage = "Something went wrong...",
   } = props;
 
   const errorStatus = hasError ? "show-error" : "hide-error";

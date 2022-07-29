@@ -2,16 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import * as serviceWorkerRegistration from "app/serviceWorkerRegistration";
 import reportWebVitals from "app/reportWebVitals";
-import AppRouter from "routes/AppRouter";
+import { ErrorBoundary } from "ui-components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import store from "app/redux/store";
 import { Provider } from "react-redux";
-import ErrorBoundary from "ui-components/errorBoundary/ErrorBoundary";
+import store from "app/redux/store";
+import AppRouter from "routes/AppRouter";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      retry: 0,
       refetchOnWindowFocus: false,
+      useErrorBoundary: true,
     },
   },
 });
@@ -21,15 +23,13 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <ErrorBoundary>
-      <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <AppRouter />
-        </QueryClientProvider>
-      </Provider>
-    </ErrorBoundary>
-  </React.StrictMode>
+  <ErrorBoundary>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <AppRouter />
+      </QueryClientProvider>
+    </Provider>
+  </ErrorBoundary>
 );
 
 // If you want your app to work offline and load faster, you can change

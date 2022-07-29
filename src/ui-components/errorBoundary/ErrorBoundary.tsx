@@ -1,6 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
 import "./errorBoundary.style.scss";
-import Button from "ui-components/button/Button";
+import { Button } from "ui-components";
 
 interface Props {
   children?: ReactNode;
