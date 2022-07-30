@@ -29,7 +29,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
-    transition: opacity 100ms ease, transform 300ms ease, visibility 100ms;
+    transition: opacity 200ms ease, transform 300ms ease, visibility 200ms;
 
     &.show-select-menu {
       opacity: 1;

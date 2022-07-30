@@ -4,7 +4,7 @@ import { Container, Divider, Input } from "ui-components";
 import UsersList from "components/usersList/UsersList";
 import useDebounce from "app/hooks/useDebounce";
 import { ReactComponent as SettingsIcon } from "assets/icons/setting.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HomePropsTypes } from "./home.types";
 import { useFilterUsersList, useUsersList } from "./home.hooks";
 import { SettingsPathNames } from "../settings/settings.route";
@@ -13,7 +13,6 @@ const Home: React.FC<HomePropsTypes> = () => {
   const [searchValue, setSearchValue] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
 
-  const navigate = useNavigate();
   const debouncedValue = useDebounce(searchValue, 500);
 
   const { data, isLoading, error, isError } = useUsersList({
