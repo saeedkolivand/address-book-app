@@ -3,12 +3,14 @@
 .button-wrapper {
   background: rgba(45, 132, 251, 0.1);
   border-radius: $mediumSize;
-  width: 48px;
+  min-width: 48px;
   height: 48px;
   border: none;
   cursor: pointer;
   text-align: center;
   transition: 150ms;
+  padding-left: $mediumSize;
+  padding-right: $mediumSize;
 
   &:hover {
     transition: unset;

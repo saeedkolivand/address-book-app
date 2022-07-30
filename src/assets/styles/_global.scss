@@ -3,13 +3,13 @@
 
 * {
   box-sizing: border-box;
+  font-family: $fontFamily !important;
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: $fontFamily;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,5 +1,14 @@
+@import "../../assets/styles/variables";
+
 .not-found-wrapper {
+  width: 100%;
   margin-top: 10px;
-  text-align: center;
   top: 40%;
+  flex-direction: column;
+  gap: calc($mediumSize + 4px);
+
+  .not-found-wrapper__back-button {
+    width: max-content;
+    text-decoration: none;
+  }
 }
