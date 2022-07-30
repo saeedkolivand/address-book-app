@@ -1,6 +1,5 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { Button } from "ui-components";
-import { useOnClickOutside } from "usehooks-ts";
 import "./select.style.scss";
 import { SelectPropsTypes, SelectOptionType } from "./select.types";
 
@@ -9,22 +8,8 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
 
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
 
-  const dropdownRef = useRef(null);
-  const onClickInside = () => setIsDropDownVisible(true);
+  const onClickInside = () => setIsDropDownVisible(!isDropDownVisible);
   const onClickOutSide = () => setIsDropDownVisible(false);
-  useOnClickOutside(dropdownRef, onClickOutSide);
-
-  const [selectedItem, setSelectedItem] = useState<SelectOptionType>({
-    label: "Select an option",
-    value: "",
-  });
-
-  const onSelectMenuItem = useCallback((selected: SelectOptionType) => {
-    setSelectedItem(selected);
-    onClickOutSide();
-    onChange && onChange(selected);
-  }, []);
-
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isDropDownVisible) {
@@ -37,18 +22,38 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
     return () => {
       document.removeEventListener("keydown", handleKeydown);
     };
+  }, [isDropDownVisible]);
+
+  useEffect(() => {
+    if (isDropDownVisible) {
+      document.addEventListener("mousedown", onClickOutSide);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", onClickOutSide);
+    };
+  }, [isDropDownVisible]);
+
+  const [selectedItem, setSelectedItem] = useState<SelectOptionType>({
+    label: "Select an option",
+    value: "",
+  });
+
+  const onSelectMenuItem = useCallback((selected: SelectOptionType) => {
+    setSelectedItem(selected);
+    onClickOutSide();
+    onChange && onChange(selected);
   }, []);
 
   return (
     <div className="select-container">
       <Button
-        onClick={!isDropDownVisible ? onClickInside : () => null}
+        onClick={onClickInside}
         className="select-container__menu-trigger flex-center"
       >
         <span>{selectedItem.label}</span>
       </Button>
       <nav
-        ref={dropdownRef}
         className={`select-container__dropdown ${
           isDropDownVisible ? "show-select-menu" : ""
         }`}
