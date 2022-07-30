@@ -2,7 +2,7 @@ import React from "react";
 import "./notFound.style.scss";
 import { Link } from "react-router-dom";
 import { HomePathNames } from "pages/home/home.route";
-import Button from "../button/Button";
+import { Button } from "ui-components";
 import { NotFoundPropsTypes } from "./notFound.types";
 
 const NotFound: React.FC<NotFoundPropsTypes> = (props) => {
