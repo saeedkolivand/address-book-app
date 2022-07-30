@@ -3,11 +3,13 @@ import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NotFound, Loading } from "ui-components";
 import { HomeRoutes } from "pages/home/home.route";
+import { SettingsRoutes } from "pages/settings/settings.route";
 import { AppRouterTypes } from "./appRouter.types";
 import "assets/styles/_global.scss";
 
 export const appRoutes: AppRouterTypes[] = [
   ...HomeRoutes,
+  ...SettingsRoutes,
   {
     title: "404",
     element: <NotFound />,
