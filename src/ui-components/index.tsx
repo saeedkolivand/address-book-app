@@ -1,6 +1,7 @@
 import Button from "./button/Button";
 import Container from "./container/Container";
 import Divider from "./divider/Divider";
+import Select from "./select/Select";
 import Error from "./error/Error";
 import ErrorBoundary from "./errorBoundary/ErrorBoundary";
 import Image from "./image/Image";
@@ -11,6 +12,7 @@ import NotFound from "./notFound/NotFound";
 export {
   Button,
   Divider,
+  Select,
   Input,
   Container,
   Error,
