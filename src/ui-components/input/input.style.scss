@@ -6,6 +6,7 @@
 
   .input-wrapper__input {
     width: 100%;
+    height: calc($largeSize * 2);
     border: 1px solid #e6eaf0;
     border-radius: $mediumSize;
     font-size: $fontSize;

@@ -1,15 +1,41 @@
 @import "../../assets/styles/variables.scss";
 
 .home-wrapper {
-  .home-wrapper__search {
-    background-color: #fff;
+  .home-wrapper__header {
     position: fixed;
     top: 0;
     width: 100%;
     height: calc($largeSize * 4);
+    background-color: #fff;
     padding-top: $largeSize;
     padding-left: $largeSize;
     padding-right: $largeSize;
+
+    .home-wrapper__header__search-box {
+      gap: $mediumSize;
+
+      .home-wrapper__header__search-box--search {
+      }
+
+      .home-wrapper__header__search-box--settings {
+        svg {
+          width: calc($largeSize * 2);
+          height: calc($largeSize * 2);
+          border: 1px solid #e6eaf0;
+          border-radius: $mediumSize;
+          padding: $smallSize;
+          cursor: pointer;
+          transition: 300ms;
+
+          &:hover {
+            border: 1px solid #3eaeff;
+            transition: 200ms ease-in-out;
+            outline: none;
+            box-shadow: 0 0 10px rgba(62, 174, 255, 0.2);
+          }
+        }
+      }
+    }
 
     .divider {
       margin-top: $largeSize;

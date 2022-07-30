@@ -2,7 +2,7 @@ import { AppRouterTypes } from "routes/appRouter.types";
 import Settings from "./Settings";
 
 export const SettingsPathNames = {
-  root: "/",
+  root: "/settings",
 };
 
 export const SettingsRoutes: AppRouterTypes[] = [
