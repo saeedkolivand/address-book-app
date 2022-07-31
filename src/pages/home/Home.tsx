@@ -103,8 +103,96 @@ const Home: React.FC<HomePropsTypes> = () => {
         onOk={handleCloseModal}
         onCancel={handleCloseModal}
         title="User Info"
+        cancelText="Close"
+        hideOkButton
       >
-        {JSON.stringify(selectedUserData)}
+        <div className="" style={{ display: "grid" }}>
+          <div
+            className="user-info-wrapper flex-center"
+            style={{ justifyContent: "space-between", width: "100%" }}
+          >
+            <div style={{ width: "30%" }}>Street:&nbsp;</div>
+            <div
+              style={{
+                width: "70%",
+                textAlign: "left",
+              }}
+            >
+              {selectedUserData?.location.street.number},&nbsp;
+              {selectedUserData?.location.street.name}
+            </div>
+          </div>
+          <div
+            className="user-info-wrapper flex-center"
+            style={{ justifyContent: "space-between" }}
+          >
+            <div style={{ width: "30%" }}>City:&nbsp;</div>
+            <div
+              style={{
+                width: "70%",
+                textAlign: "left",
+              }}
+            >
+              {selectedUserData?.location.city}
+            </div>
+          </div>
+          <div
+            className="user-info-wrapper flex-center"
+            style={{ justifyContent: "space-between" }}
+          >
+            <div style={{ width: "30%" }}>State:&nbsp;</div>
+            <div
+              style={{
+                width: "70%",
+                textAlign: "left",
+              }}
+            >
+              {selectedUserData?.location.state}
+            </div>
+          </div>
+          <div
+            className="user-info-wrapper flex-center"
+            style={{ justifyContent: "space-between" }}
+          >
+            <div style={{ width: "30%" }}>Postcode:&nbsp;</div>
+            <div
+              style={{
+                width: "70%",
+                textAlign: "left",
+              }}
+            >
+              {selectedUserData?.location.postcode}
+            </div>
+          </div>
+          <div
+            className="user-info-wrapper flex-center"
+            style={{ justifyContent: "space-between" }}
+          >
+            <div style={{ width: "30%" }}>Phone:&nbsp;</div>
+            <div
+              style={{
+                width: "70%",
+                textAlign: "left",
+              }}
+            >
+              {selectedUserData?.phone}
+            </div>
+          </div>
+          <div
+            className="user-info-wrapper flex-center"
+            style={{ justifyContent: "space-between" }}
+          >
+            <div style={{ width: "30%" }}>Cell:&nbsp;</div>
+            <div
+              style={{
+                width: "70%",
+                textAlign: "left",
+              }}
+            >
+              {selectedUserData?.cell}
+            </div>
+          </div>
+        </div>
       </Modal>
     </Container>
   );

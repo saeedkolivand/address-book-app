@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Button } from "ui-components";
 import { ReactComponent as CloseIcon } from "assets/icons/close.svg";
+import useMediaQuery from "app/hooks/useMediaQuery";
 import { ModalPropsTypes } from "./modal.types";
 import "./modal.style.scss";
 
@@ -29,9 +30,12 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
     width = 520,
     closeIcon = <CloseIcon />,
     backgroundStyle,
+    hideOkButton = false,
   } = props;
 
   const modalVisibilityStatus = visible ? "show-modal" : "hide-modal";
+
+  const isMobile = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -65,7 +69,11 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
       <div
         className={`modal-wrapper absolute-center ${className} ${modalVisibilityStatus}`}
         aria-label="modal-wrapper"
-        style={{ width, top: window.scrollY + 200, ...style }}
+        style={{
+          width,
+          top: isMobile ? window.scrollY + 200 : window.scrollY + 100,
+          ...style,
+        }}
         ref={ref}
       >
         <div className={`modal-wrapper__header flex-center ${titleClassName}`}>
@@ -94,7 +102,7 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
           </Button>
           <Button
             className={`modal-wrapper__footer--ok ${okButtonClassName}`}
-            style={okButtonStyle}
+            style={{ display: hideOkButton ? "none" : "", ...okButtonStyle }}
             disabled={okButtonDisabled}
             onClick={onOk}
           >

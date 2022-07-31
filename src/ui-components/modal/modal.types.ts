@@ -24,4 +24,5 @@ export interface ModalPropsTypes {
   closeIcon?: ReactNode;
   backgroundStyle?: CSSProperties;
   ref?: Ref<any>;
+  hideOkButton?: boolean;
 }

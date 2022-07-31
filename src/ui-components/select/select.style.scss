@@ -14,7 +14,15 @@
     color: $mainFontColor;
 
     &:hover {
-      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+      border: 1px solid #3eaeff;
+      transition: 300ms ease-in-out;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid #3eaeff;
+      box-shadow: 0 0 10px rgba(62, 174, 255, 0.2);
+      transition: 300ms ease-in-out;
     }
 
     span {
@@ -28,11 +36,11 @@
     position: absolute;
     top: 60px;
     width: 250px;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
     transition: opacity 200ms ease, transform 300ms ease, visibility 200ms;
+    border: 1px solid #e6eaf0;
 
     &.show-select-menu {
       opacity: 1;

@@ -65,7 +65,7 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
         onClick={onClickInside}
         className="select-container__menu-trigger flex-center"
         style={{
-          boxShadow: isDropDownVisible ? "0 1px 8px rgba(0, 0, 0, 0.3)" : "",
+          border: isDropDownVisible ? "1px solid #3eaeff" : "",
           ...buttonStyle,
         }}
       >
