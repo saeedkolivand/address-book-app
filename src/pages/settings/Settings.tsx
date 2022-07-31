@@ -29,7 +29,6 @@ const Settings: React.FC<SettingsPropsTypes> = () => {
         <div>Settings</div>
         <div />
       </div>
-
       <Divider />
 
       <div className="settings-wrapper__content flex-center">
