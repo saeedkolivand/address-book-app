@@ -4,12 +4,21 @@ import "./userCard.style.scss";
 import { UserCardPropsTypes } from "./userCard.types";
 
 const UserCard: React.FC<UserCardPropsTypes> = (props) => {
-  const { picture, name, email, login } = props;
+  const { picture, name, email, login, onClick, ...rest } = props;
 
   return (
     <div
       className="user-card-wrapper flex-center"
       aria-label="user-card-wrapper"
+      onClick={() =>
+        onClick({
+          picture,
+          name,
+          email,
+          login,
+          ...rest,
+        })
+      }
     >
       <div className="user-card-wrapper__picture flex-center">
         <Image src={picture?.thumbnail} onError={() => "No picture"} />

@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { forwardRef, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { Button, Divider } from "ui-components";
+import { Button } from "ui-components";
 import { ReactComponent as CloseIcon } from "assets/icons/close.svg";
 import { ModalPropsTypes } from "./modal.types";
 import "./modal.style.scss";
 
-const Modal: React.FC<ModalPropsTypes> = (props) => {
+const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
   const {
     title = "",
     className = "",
@@ -26,8 +26,9 @@ const Modal: React.FC<ModalPropsTypes> = (props) => {
     backgroundClassName = "",
     children,
     style,
-    width,
+    width = 520,
     closeIcon = <CloseIcon />,
+    backgroundStyle,
   } = props;
 
   const modalVisibilityStatus = visible ? "show-modal" : "hide-modal";
@@ -53,36 +54,37 @@ const Modal: React.FC<ModalPropsTypes> = (props) => {
     <>
       <div
         className={`modal-background absolute-center ${backgroundClassName} ${modalVisibilityStatus}`}
+        onClick={onCancel}
+        style={{
+          ...backgroundStyle,
+          top: window.scrollY,
+        }}
+        ref={ref}
       />
 
       <div
         className={`modal-wrapper absolute-center ${className} ${modalVisibilityStatus}`}
         aria-label="modal-wrapper"
+        style={{ width, top: window.scrollY + 200, ...style }}
+        ref={ref}
       >
         <div className={`modal-wrapper__header flex-center ${titleClassName}`}>
           <div className="modal-wrapper__header--title">{title}</div>
           {!hideClose && (
-            <div className="modal-wrapper__header--close" onClick={onCancel}>
+            <div
+              className="modal-wrapper__header--close flex-center"
+              onClick={onCancel}
+            >
               {closeIcon}
             </div>
           )}
         </div>
 
-        <Divider />
-
-        <div
-          className={`modal-wrapper__body ${bodyClassName}`}
-          style={{
-            width,
-            ...style,
-          }}
-        >
+        <div className={`modal-wrapper__body ${bodyClassName}`} style={style}>
           {children}
         </div>
 
-        <Divider />
-
-        <div className={`modal-wrapper__footer ${footerClassName}`}>
+        <div className={`modal-wrapper__footer flex-center ${footerClassName}`}>
           <Button
             className={`modal-wrapper__footer--cancel ${cancelButtonClassName}`}
             style={cancelButtonStyle}
@@ -103,6 +105,6 @@ const Modal: React.FC<ModalPropsTypes> = (props) => {
     </>,
     document.getElementById("modal")!
   );
-};
+});
 
 export default Modal;

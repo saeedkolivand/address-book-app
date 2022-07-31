@@ -30,10 +30,38 @@ export interface UsersListApiResponseTypes {
 
 export interface UsersDto {
   name: Name;
+  location: Location;
   email: string;
   login: Login;
+  phone: string;
+  cell: string;
   picture: Picture;
-  nat: Nat;
+  nat: string;
+}
+
+export interface Location {
+  street: Street;
+  city: string;
+  state: string;
+  country: string;
+  postcode: number | string;
+  coordinates: Coordinates;
+  timezone: Timezone;
+}
+
+export interface Coordinates {
+  latitude: string;
+  longitude: string;
+}
+
+export interface Street {
+  number: number;
+  name: string;
+}
+
+export interface Timezone {
+  offset: string;
+  description: string;
 }
 
 export interface Login {
@@ -55,35 +83,10 @@ export interface Name {
 export enum Title {
   MS = "Ms",
   Madame = "Madame",
-  Mademoiselle = "Mademoiselle",
   Miss = "Miss",
   Monsieur = "Monsieur",
   Mr = "Mr",
   Mrs = "Mrs",
-}
-
-export enum Nat {
-  Au = "AU",
-  Br = "BR",
-  CA = "CA",
-  Ch = "CH",
-  De = "DE",
-  Dk = "DK",
-  Es = "ES",
-  Fi = "FI",
-  Fr = "FR",
-  GB = "GB",
-  IR = "IR",
-  Ie = "IE",
-  In = "IN",
-  MX = "MX",
-  Nl = "NL",
-  No = "NO",
-  Nz = "NZ",
-  Rs = "RS",
-  Tr = "TR",
-  Ua = "UA",
-  Us = "US",
 }
 
 export interface Picture {

@@ -9,6 +9,7 @@ import Input from "./input/Input";
 import Loading from "./loading/Loading";
 import NotFound from "./notFound/NotFound";
 import FormItemLabel from "./formItemLabel/FormItemLabel";
+import Modal from "./modal/Modal";
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   Image,
   NotFound,
   FormItemLabel,
+  Modal,
 };

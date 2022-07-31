@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode, Ref } from "react";
 
 export interface ModalPropsTypes {
   visible: boolean;
@@ -22,4 +22,6 @@ export interface ModalPropsTypes {
   style?: CSSProperties;
   width?: number | string;
   closeIcon?: ReactNode;
+  backgroundStyle?: CSSProperties;
+  ref?: Ref<any>;
 }

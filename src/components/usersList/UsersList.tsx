@@ -13,6 +13,7 @@ const UsersList: React.FC<UsersListPropsTypes> = (props) => {
     onUpdatePageNumber,
     isFirstPage,
     isFilterActive,
+    onClickItem,
   } = props;
 
   const [list, setList] = useState<UsersDto[]>([]);
@@ -58,7 +59,7 @@ const UsersList: React.FC<UsersListPropsTypes> = (props) => {
         endMessage="end of users catalog"
       >
         {list?.map((item) => (
-          <UserCard {...item} key={item.login.uuid} />
+          <UserCard {...item} key={item.login.uuid} onClick={onClickItem} />
         ))}
       </InfiniteScroll>
     </div>

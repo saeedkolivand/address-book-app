@@ -1,18 +1,20 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useCallback, useState } from "react";
 import "./home.style.scss";
-import { Container, Divider, Input } from "ui-components";
+import { Container, Divider, Input, Modal } from "ui-components";
 import UsersList from "components/usersList/UsersList";
 import useDebounce from "app/hooks/useDebounce";
 import { ReactComponent as SettingsIcon } from "assets/icons/setting.svg";
 import { Link } from "react-router-dom";
 import { useSelector } from "app/redux/redux.hooks";
-import { HomePropsTypes } from "./home.types";
+import { HomePropsTypes, UsersDto } from "./home.types";
 import { useFilterUsersList, useUsersList } from "./home.hooks";
 import { SettingsPathNames } from "../settings/settings.route";
 
 const Home: React.FC<HomePropsTypes> = () => {
   const [searchValue, setSearchValue] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedUserData, setSelectedUserData] = useState<UsersDto>();
 
   const debouncedValue = useDebounce(searchValue, 500);
   const { nationality } = useSelector((state) => state.settingsReducer);
@@ -36,6 +38,14 @@ const Home: React.FC<HomePropsTypes> = () => {
     setSearchValue(event.target.value);
 
   const handleClearSearchValue = () => setSearchValue("");
+
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+  const onClickUser = useCallback((user: UsersDto) => {
+    setSelectedUserData(user);
+    handleShowModal();
+  }, []);
 
   return (
     <Container
@@ -84,8 +94,18 @@ const Home: React.FC<HomePropsTypes> = () => {
           onUpdatePageNumber={handleUpdatePageNumber}
           isFirstPage={pageNumber === 1 || filterResult?.length > 0}
           isFilterActive={filterResult?.length > 0}
+          onClickItem={onClickUser}
         />
       </section>
+
+      <Modal
+        visible={showModal}
+        onOk={handleCloseModal}
+        onCancel={handleCloseModal}
+        title="User Info"
+      >
+        {JSON.stringify(selectedUserData)}
+      </Modal>
     </Container>
   );
 };

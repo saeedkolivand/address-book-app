@@ -6,4 +6,5 @@ export interface UsersListPropsTypes {
   onUpdatePageNumber: () => void;
   isFirstPage: boolean;
   isFilterActive: boolean;
+  onClickItem: (data: UsersDto) => void;
 }

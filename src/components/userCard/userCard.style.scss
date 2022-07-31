@@ -5,10 +5,16 @@
   justify-content: space-between;
   padding: $largeSize $mediumSize;
   border-radius: $smallSize;
+  transition: 300ms;
+  cursor: pointer;
 
   @media (max-width: 800px) {
     flex-direction: column;
     gap: $mediumSize;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
   }
 
   .user-card-wrapper__picture,
