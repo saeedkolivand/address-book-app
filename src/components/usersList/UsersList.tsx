@@ -51,10 +51,11 @@ const UsersList: React.FC<UsersListPropsTypes> = (props) => {
         next={onUpdatePageNumber}
         loader={
           <div className="flex-center">
-            {isFilterActive ? "" : "Loading Users"}
+            {isFilterActive ? "" : "loading..."}
           </div>
         }
-        hasMore={!isFilterActive}
+        hasMore={!isFilterActive || list?.length === 1000}
+        endMessage="end of users catalog"
       >
         {list?.map((item) => (
           <UserCard {...item} key={item.login.uuid} />

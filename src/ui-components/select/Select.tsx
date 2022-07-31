@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { Button, FormItemLabel } from "ui-components";
 import "./select.style.scss";
-import { SelectPropsTypes, SelectOptionType } from "./select.types";
+import { SelectPropsTypes } from "./select.types";
 
 const Select: React.FC<SelectPropsTypes> = (props) => {
   const {
@@ -15,8 +15,11 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
     wrapperClassName = "",
     open = false,
     itemLabel,
+    placeholder = "Select an option",
+    value,
   } = props;
 
+  const [selectedItem, setSelectedItem] = useState(value);
   const [isDropDownVisible, setIsDropDownVisible] = useState(open);
 
   const onClickInside = () => setIsDropDownVisible(!isDropDownVisible);
@@ -36,15 +39,10 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
     };
   }, [isDropDownVisible]);
 
-  const [selectedItem, setSelectedItem] = useState<SelectOptionType>({
-    label: "Select an option",
-    value: "",
-  });
-
-  const onSelectMenuItem = useCallback((selected: SelectOptionType) => {
+  const onSelectMenuItem = useCallback((selected: string) => {
     setSelectedItem(selected);
-    onClickOutSide();
     onChange && onChange(selected);
+    onClickOutSide();
   }, []);
 
   return (
@@ -71,7 +69,7 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
           ...buttonStyle,
         }}
       >
-        <span>{selectedItem.label}</span>
+        <span>{selectedItem || placeholder}</span>
       </Button>
       <nav
         className={`select-container__dropdown ${
@@ -84,8 +82,8 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
       >
         <ul>
           {options?.map((option) => (
-            <li key={option.value + option.label}>
-              <div onClick={() => onSelectMenuItem(option)}>{option.label}</div>
+            <li key={option}>
+              <div onClick={() => onSelectMenuItem(option)}>{option}</div>
             </li>
           ))}
         </ul>

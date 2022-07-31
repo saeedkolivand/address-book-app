@@ -6,6 +6,7 @@ export interface HomeApiParamsTypes {
   page: number;
   results: number;
   inc?: string;
+  nat: string;
 }
 
 export type useFilterUsersListHookTypes = (

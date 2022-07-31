@@ -1,20 +1,22 @@
 import React from "react";
 import { Container, Divider, Select } from "ui-components";
-import { SelectOptionType } from "ui-components/select/select.types";
 import { Link } from "react-router-dom";
 import { HomePathNames } from "pages/home/home.route";
 import { ReactComponent as BackIcon } from "assets/icons/back.svg";
-import { SettingsPropsTypes } from "./settings.types";
+import { useDispatch, useSelector } from "app/redux/redux.hooks";
+import { NationalityValuesTypes, SettingsPropsTypes } from "./settings.types";
 import "./settings.style.scss";
+import { addNationalityAction } from "./settings.slice";
 
-const dropdownOptions: SelectOptionType[] = [
-  { label: "CH", value: "CH" },
-  { label: "ES", value: "ES" },
-  { label: "FR", value: "FR" },
-  { label: "GB", value: "GB" },
-];
+export const dropdownOptions = ["default", "CH", "ES", "FR", "GB"];
 
 const Settings: React.FC<SettingsPropsTypes> = () => {
+  const { nationality } = useSelector((state) => state.settingsReducer);
+  const dispatch = useDispatch();
+
+  const onSelectNationality = (value: NationalityValuesTypes) =>
+    dispatch(addNationalityAction(value));
+
   return (
     <Container className="settings-wrapper">
       <div className="settings-wrapper__header flex-center">
@@ -30,11 +32,14 @@ const Settings: React.FC<SettingsPropsTypes> = () => {
 
       <Divider />
 
-      <div className="settings-wrapper__content">
-        <div className="flex-center" style={{ gap: 16 }}>
-          <div>Select People Nationality :</div>
-          <Select options={dropdownOptions} />
-        </div>
+      <div className="settings-wrapper__content flex-center">
+        <div>Select Nationality :</div>
+        <Select
+          options={dropdownOptions}
+          placeholder="Select a nationality"
+          value={nationality}
+          onChange={onSelectNationality}
+        />
       </div>
     </Container>
   );

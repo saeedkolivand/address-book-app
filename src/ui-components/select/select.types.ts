@@ -1,16 +1,11 @@
 import { CSSProperties } from "react";
 
-export type SelectOptionType = {
-  label: string;
-  value: string;
-};
-
 export interface SelectPropsTypes {
-  options?: SelectOptionType[];
+  options?: string[];
   buttonStyle?: CSSProperties;
   dropdownStyle?: CSSProperties;
   listHeight?: number;
-  onChange?: (arg0: SelectOptionType) => SelectOptionType;
+  onChange?: (value: any) => void;
   open?: boolean;
   id?: string;
   wrapperStyle?: CSSProperties;
@@ -20,4 +15,6 @@ export interface SelectPropsTypes {
     required?: boolean;
     style?: CSSProperties;
   };
+  placeholder?: string;
+  value?: string;
 }

@@ -5,6 +5,7 @@ import UsersList from "components/usersList/UsersList";
 import useDebounce from "app/hooks/useDebounce";
 import { ReactComponent as SettingsIcon } from "assets/icons/setting.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "app/redux/redux.hooks";
 import { HomePropsTypes } from "./home.types";
 import { useFilterUsersList, useUsersList } from "./home.hooks";
 import { SettingsPathNames } from "../settings/settings.route";
@@ -14,11 +15,13 @@ const Home: React.FC<HomePropsTypes> = () => {
   const [pageNumber, setPageNumber] = useState(1);
 
   const debouncedValue = useDebounce(searchValue, 500);
+  const { nationality } = useSelector((state) => state.settingsReducer);
 
   const { data, isLoading, error, isError } = useUsersList({
     page: pageNumber,
     results: 50,
-    inc: "name,nat,email,picture,login",
+    inc: "name,nat,email,picture,login,location,phone,cell",
+    nat: nationality,
   });
 
   const { filterResult } = useFilterUsersList(

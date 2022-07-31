@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import SettingsSlice from "pages/settings/settings.slice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    settingsReducer: SettingsSlice.reducer,
+  },
   devTools: process.env.NODE_ENV !== "production",
 });
 
