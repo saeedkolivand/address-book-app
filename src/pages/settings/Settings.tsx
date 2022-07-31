@@ -31,7 +31,10 @@ const Settings: React.FC<SettingsPropsTypes> = () => {
       <Divider />
 
       <div className="settings-wrapper__content">
-        <Select options={dropdownOptions} />
+        <div className="flex-center" style={{ gap: 16 }}>
+          <div>Select People Nationality :</div>
+          <Select options={dropdownOptions} />
+        </div>
       </div>
     </Container>
   );

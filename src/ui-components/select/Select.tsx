@@ -2,18 +2,31 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 import { Button } from "ui-components";
 import "./select.style.scss";
 import { SelectPropsTypes, SelectOptionType } from "./select.types";
+import FormItemLabel from "../formItemLabel/FormItemLabel";
 
 const Select: React.FC<SelectPropsTypes> = (props) => {
-  const { dropdownStyle, listHeight, onChange, options } = props;
+  const {
+    buttonStyle,
+    dropdownStyle,
+    listHeight,
+    onChange,
+    options,
+    id = "",
+    wrapperStyle,
+    wrapperClassName = "",
+    open = false,
+    itemLabel,
+  } = props;
 
-  const [isDropDownVisible, setIsDropDownVisible] = useState(false);
+  const [isDropDownVisible, setIsDropDownVisible] = useState(open);
 
   const onClickInside = () => setIsDropDownVisible(!isDropDownVisible);
   const onClickOutSide = () => setIsDropDownVisible(false);
+
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isDropDownVisible) {
-        setIsDropDownVisible(false);
+        onClickOutSide();
       }
     };
 
@@ -21,16 +34,6 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
 
     return () => {
       document.removeEventListener("keydown", handleKeydown);
-    };
-  }, [isDropDownVisible]);
-
-  useEffect(() => {
-    if (isDropDownVisible) {
-      document.addEventListener("mousedown", onClickOutSide);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", onClickOutSide);
     };
   }, [isDropDownVisible]);
 
@@ -46,10 +49,28 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
   }, []);
 
   return (
-    <div className="select-container">
+    <div
+      className={`select-container ${wrapperClassName}`}
+      id={id}
+      style={wrapperStyle}
+    >
+      {itemLabel && (
+        <FormItemLabel
+          {...itemLabel}
+          label={itemLabel?.title || ""}
+          style={{
+            alignSelf: "flex-start",
+            ...itemLabel?.style,
+          }}
+        />
+      )}
       <Button
         onClick={onClickInside}
         className="select-container__menu-trigger flex-center"
+        style={{
+          boxShadow: isDropDownVisible ? "0 1px 8px rgba(0, 0, 0, 0.3)" : "",
+          ...buttonStyle,
+        }}
       >
         <span>{selectedItem.label}</span>
       </Button>

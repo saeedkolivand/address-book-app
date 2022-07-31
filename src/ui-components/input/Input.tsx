@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { ReactComponent as ClearIcon } from "assets/icons/delete.svg";
 import { InputPropsTypes } from "./input.types";
 import "./input.style.scss";
+import FormItemLabel from "../formItemLabel/FormItemLabel";
 
 const Input: React.FC<InputPropsTypes> = (props) => {
-  const { className = "", value, onClear, ...rest } = props;
+  const { className = "", value, onClear, itemLabel, ...rest } = props;
 
   useEffect(() => {
     const handleClearOnEscape = (event: KeyboardEvent) => {
@@ -21,7 +22,17 @@ const Input: React.FC<InputPropsTypes> = (props) => {
   }, []);
 
   return (
-    <div className="input-wrapper">
+    <div className="input-wrapper flex-center">
+      {itemLabel && (
+        <FormItemLabel
+          {...itemLabel}
+          label={itemLabel?.title || ""}
+          style={{
+            alignSelf: "flex-start",
+            ...itemLabel?.style,
+          }}
+        />
+      )}
       <input
         {...rest}
         className={`input-wrapper__input ${className}`}
