@@ -20,10 +20,18 @@ const Loading: React.FC<LoadingPropsTypes> = (props) => {
 
   return ReactDOM.createPortal(
     <>
-      <div className={`loading-background absolute-center ${loadingStatus}`} />
+      <div
+        className={`loading-background absolute-center ${loadingStatus}`}
+        style={{
+          top: window.scrollY,
+        }}
+      />
       <div
         className={`loading-wrapper absolute-center ${loadingStatus}`}
         aria-label="loading-wrapper"
+        style={{
+          top: window.scrollY + 250,
+        }}
       >
         <div className="loading-wrapper--loading-body flex-center absolute-center">
           <div className="loading-wrapper--loading-body__spinner" />
