@@ -1,8 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
-import { Button } from "ui-components";
+import { Button, FormItemLabel } from "ui-components";
 import "./select.style.scss";
 import { SelectPropsTypes, SelectOptionType } from "./select.types";
-import FormItemLabel from "../formItemLabel/FormItemLabel";
 
 const Select: React.FC<SelectPropsTypes> = (props) => {
   const {

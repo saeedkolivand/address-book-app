@@ -8,6 +8,7 @@ import Image from "./image/Image";
 import Input from "./input/Input";
 import Loading from "./loading/Loading";
 import NotFound from "./notFound/NotFound";
+import FormItemLabel from "./formItemLabel/FormItemLabel";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   ErrorBoundary,
   Image,
   NotFound,
+  FormItemLabel,
 };

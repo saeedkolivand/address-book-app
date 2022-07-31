@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { ReactComponent as ClearIcon } from "assets/icons/delete.svg";
+import { FormItemLabel } from "ui-components";
 import { InputPropsTypes } from "./input.types";
 import "./input.style.scss";
-import FormItemLabel from "../formItemLabel/FormItemLabel";
 
 const Input: React.FC<InputPropsTypes> = (props) => {
   const { className = "", value, onClear, itemLabel, ...rest } = props;

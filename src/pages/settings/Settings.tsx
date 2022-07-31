@@ -7,14 +7,14 @@ import { ReactComponent as BackIcon } from "assets/icons/back.svg";
 import { SettingsPropsTypes } from "./settings.types";
 import "./settings.style.scss";
 
-const Settings: React.FC<SettingsPropsTypes> = () => {
-  const dropdownOptions: SelectOptionType[] = [
-    { label: "CH", value: "CH" },
-    { label: "ES", value: "ES" },
-    { label: "FR", value: "FR" },
-    { label: "GB", value: "GB" },
-  ];
+const dropdownOptions: SelectOptionType[] = [
+  { label: "CH", value: "CH" },
+  { label: "ES", value: "ES" },
+  { label: "FR", value: "FR" },
+  { label: "GB", value: "GB" },
+];
 
+const Settings: React.FC<SettingsPropsTypes> = () => {
   return (
     <Container className="settings-wrapper">
       <div className="settings-wrapper__header flex-center">
