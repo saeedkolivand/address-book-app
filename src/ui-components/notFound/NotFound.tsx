@@ -13,14 +13,12 @@ const NotFound: React.FC<NotFoundPropsTypes> = (props) => {
       aria-label="not-found-wrapper"
     >
       Page Not Found :(
-      {/* <Link to={HomePathNames.root} className="not-found-wrapper__back-button"> */}
       <Button
         className="not-found-wrapper__back-button"
         onClick={() => window.location.replace(HomePathNames.root)}
       >
         Back to Home
       </Button>
-      {/* </Link> */}
     </div>
   );
 };
