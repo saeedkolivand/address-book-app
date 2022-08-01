@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import React, { useEffect } from "react";
+import { Button } from "ui-components";
 import { ErrorPropsTypes } from "./error.types";
 import "./error.style.scss";
 
@@ -30,13 +31,12 @@ const Error: React.FC<ErrorPropsTypes> = (props) => {
         aria-label="error-wrapper"
       >
         <div className="error-wrapper--message-text">{errorMessage}</div>
-        <button
+        <Button
           className="error-wrapper--retry-button"
-          type="button"
           onClick={callbackFunction}
         >
           Retry
-        </button>
+        </Button>
       </div>
     </>,
     document.getElementById("error-modal")!

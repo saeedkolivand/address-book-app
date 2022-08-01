@@ -1,6 +1,5 @@
 import React from "react";
 import "./notFound.style.scss";
-import { Link } from "react-router-dom";
 import { HomePathNames } from "pages/home/home.route";
 import { Button } from "ui-components";
 import { NotFoundPropsTypes } from "./notFound.types";
@@ -14,9 +13,14 @@ const NotFound: React.FC<NotFoundPropsTypes> = (props) => {
       aria-label="not-found-wrapper"
     >
       Page Not Found :(
-      <Link to={HomePathNames.root} className="not-found-wrapper__back-button">
-        <Button>Back to Home</Button>
-      </Link>
+      {/* <Link to={HomePathNames.root} className="not-found-wrapper__back-button"> */}
+      <Button
+        className="not-found-wrapper__back-button"
+        onClick={() => window.location.replace(HomePathNames.root)}
+      >
+        Back to Home
+      </Button>
+      {/* </Link> */}
     </div>
   );
 };
