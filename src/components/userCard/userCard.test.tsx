@@ -1,8 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import UserCard from "./UserCard";
 import { mockedApiResponse } from "../../../__mocks__/apiResponse";
 
 describe("UserCard test cases", () => {
+  afterAll(cleanup);
+
   it("should render without throwing an error", () => {
     render(<UserCard {...mockedApiResponse[0]} />);
 
