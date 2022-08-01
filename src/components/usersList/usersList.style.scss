@@ -16,6 +16,7 @@
 
   .users-list-wrapper__header {
     padding: $largeSize $mediumSize;
+    cursor: default;
 
     @media (max-width: 800px) {
       display: none;

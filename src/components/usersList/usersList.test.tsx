@@ -19,6 +19,7 @@ describe("RepositoryList test cases", () => {
         onUpdatePageNumber={() => {}}
         isFirstPage
         isFilterActive
+        onClickItem={() => {}}
       />
     );
 
