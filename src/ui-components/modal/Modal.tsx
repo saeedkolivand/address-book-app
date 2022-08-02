@@ -2,7 +2,6 @@ import React, { forwardRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Button } from "ui-components";
 import { ReactComponent as CloseIcon } from "assets/icons/close.svg";
-import useMediaQuery from "app/hooks/useMediaQuery";
 import { ModalPropsTypes } from "./modal.types";
 import "./modal.style.scss";
 
@@ -34,8 +33,6 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
   } = props;
 
   const modalVisibilityStatus = visible ? "show-modal" : "hide-modal";
-
-  const isMobile = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -71,7 +68,7 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
         aria-label="modal-wrapper"
         style={{
           width,
-          top: isMobile ? window.scrollY + 200 : window.scrollY + 100,
+          top: window.scrollY + 100,
           ...style,
         }}
         ref={ref}
@@ -82,6 +79,7 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
             <div
               className="modal-wrapper__header--close flex-center"
               onClick={onCancel}
+              aria-label="modal-wrapper__header--close"
             >
               {closeIcon}
             </div>
@@ -97,6 +95,7 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
             className={`modal-wrapper__footer--cancel ${cancelButtonClassName}`}
             style={cancelButtonStyle}
             onClick={onCancel}
+            aria-label="modal-wrapper__footer--cancel"
           >
             {cancelText}
           </Button>
@@ -105,6 +104,7 @@ const Modal: React.FC<ModalPropsTypes> = forwardRef((props, ref) => {
             style={{ display: hideOkButton ? "none" : "", ...okButtonStyle }}
             disabled={okButtonDisabled}
             onClick={onOk}
+            aria-label="modal-wrapper__footer--ok"
           >
             {okText}
           </Button>
