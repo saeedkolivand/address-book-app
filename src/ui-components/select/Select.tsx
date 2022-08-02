@@ -50,6 +50,7 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
       className={`select-container ${wrapperClassName}`}
       id={id}
       style={wrapperStyle}
+      aria-label="select-wrapper"
     >
       {itemLabel && (
         <FormItemLabel
@@ -69,7 +70,9 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
           ...buttonStyle,
         }}
       >
-        <span>{selectedItem || placeholder}</span>
+        <span aria-label="select-container__placeholder">
+          {selectedItem || placeholder}
+        </span>
       </Button>
       <nav
         className={`select-container__dropdown ${
@@ -81,9 +84,14 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
         }}
       >
         <ul>
-          {options?.map((option) => (
+          {options?.map((option, index) => (
             <li key={option}>
-              <div onClick={() => onSelectMenuItem(option)}>{option}</div>
+              <div
+                aria-label={`select-option-${index}`}
+                onClick={() => onSelectMenuItem(option)}
+              >
+                {option}
+              </div>
             </li>
           ))}
         </ul>
