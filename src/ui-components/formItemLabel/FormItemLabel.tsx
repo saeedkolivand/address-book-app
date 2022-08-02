@@ -3,12 +3,24 @@ import { FormItemLabelPropsTypes } from "./formItemLabel.types";
 import "./formItemLabel.style.scss";
 
 const FormItemLabel: React.FC<FormItemLabelPropsTypes> = (props) => {
-  const { className = "", label = "", required = false, style } = props;
+  const {
+    wrapperClassName = "",
+    className = "",
+    label = "",
+    required = false,
+    wrapperStyle,
+    style,
+  } = props;
 
   return (
-    <div className="flex-center" style={{ justifyContent: "unset" }}>
+    <div
+      className={`form-item-label-wrapper flex-center ${wrapperClassName}`}
+      aria-label="form-item-label-wrapper"
+      style={wrapperStyle}
+    >
       <div
         className={`form-item-label ${className} ${required ? "required" : ""}`}
+        aria-label="form-item-label"
         style={style}
       >
         {label}
