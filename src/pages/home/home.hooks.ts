@@ -22,7 +22,7 @@ export const useFilterUsersList: useFilterUsersListHookTypes = (
   searchValue?: string
 ) => {
   if (!searchValue || !usersList) {
-    return { filterResult: [] };
+    return [];
   }
 
   const filterResult = usersList?.filter((user) => {
@@ -30,5 +30,5 @@ export const useFilterUsersList: useFilterUsersListHookTypes = (
     return name.toLowerCase().includes(searchValue.toLowerCase());
   });
 
-  return { filterResult };
+  return filterResult;
 };
