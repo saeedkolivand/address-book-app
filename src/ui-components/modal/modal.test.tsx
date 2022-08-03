@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { ReactNode } from "react";
 import Modal from "./Modal";
 
-export const initLoadingPortal = () => {
+export const initModalPortal = () => {
   const div = document.createElement("div");
   const body = document.querySelector("body")!;
   div.setAttribute("id", "modal");
@@ -11,7 +11,7 @@ export const initLoadingPortal = () => {
 
 describe("Modal test cases", () => {
   beforeEach(() => {
-    initLoadingPortal();
+    initModalPortal();
   });
 
   afterEach(cleanup);

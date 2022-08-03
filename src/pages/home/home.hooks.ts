@@ -21,7 +21,7 @@ export const useFilterUsersList: useFilterUsersListHookTypes = (
   usersList: UsersDto[],
   searchValue?: string
 ) => {
-  if (!searchValue) {
+  if (!searchValue || !usersList) {
     return { filterResult: [] };
   }
 

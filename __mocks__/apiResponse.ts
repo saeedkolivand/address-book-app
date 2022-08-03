@@ -43,7 +43,7 @@ export const mockedApiResponse: UsersDto[] = [
       medium: "https://randomuser.me/api/portraits/med/men/63.jpg",
       thumbnail: "https://randomuser.me/api/portraits/thumb/men/63.jpg",
     },
-    nat: "NO",
+    nat: "CH",
   },
   {
     name: {
@@ -87,6 +87,6 @@ export const mockedApiResponse: UsersDto[] = [
       medium: "https://randomuser.me/api/portraits/med/men/5.jpg",
       thumbnail: "https://randomuser.me/api/portraits/thumb/men/5.jpg",
     },
-    nat: "FI",
+    nat: "ES",
   },
 ];

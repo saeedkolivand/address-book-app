@@ -12,7 +12,7 @@ export interface HomeApiParamsTypes {
 export type useFilterUsersListHookTypes = (
   usersList: UsersDto[],
   searchValue?: string
-) => { filterResult: UsersDto[] };
+) => UsersDto[];
 
 export interface UsersListApiErrorResponseTypes {
   error: string;
