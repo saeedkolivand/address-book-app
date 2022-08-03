@@ -18,7 +18,7 @@ const Settings: React.FC<SettingsPropsTypes> = () => {
     dispatch(addNationalityAction(value));
 
   return (
-    <Container className="settings-wrapper">
+    <Container className="settings-wrapper" aria-label="settings-wrapper">
       <div className="settings-wrapper__header flex-center">
         <Link
           to={HomePathNames.root}
