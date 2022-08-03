@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import * as serviceWorkerRegistration from "app/serviceWorkerRegistration";
-import reportWebVitals from "app/reportWebVitals";
+import * as serviceWorkerRegistration from "serviceWorkerRegistration";
+import reportWebVitals from "reportWebVitals";
 import { ErrorBoundary } from "ui-components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
