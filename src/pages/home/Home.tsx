@@ -26,10 +26,7 @@ const Home: React.FC<HomePropsTypes> = () => {
     nat: nationality,
   });
 
-  const { filterResult } = useFilterUsersList(
-    data?.data.results!,
-    debouncedValue
-  );
+  const filterResult = useFilterUsersList(data?.data.results!, debouncedValue);
 
   const handleUpdatePageNumber = () =>
     setPageNumber((prevState) => prevState + 1);
