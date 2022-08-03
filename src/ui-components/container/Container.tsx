@@ -13,6 +13,7 @@ const Container: React.FC<ContainerPropsTypes> = (props) => {
     className = "",
     style,
     onClick,
+    ...rest
   } = props;
 
   return (
@@ -20,6 +21,7 @@ const Container: React.FC<ContainerPropsTypes> = (props) => {
       className={`container-wrapper ${className}`}
       onClick={onClick}
       style={style}
+      {...rest}
     >
       <Loading loading={loading} />
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface ContainerPropsTypes {
+export interface ContainerPropsTypes extends React.HTMLProps<HTMLDivElement> {
   loading?: boolean;
   hasError?: boolean;
   errorMessage?: string;
