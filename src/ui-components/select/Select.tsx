@@ -74,6 +74,16 @@ const Select: React.FC<SelectPropsTypes> = (props) => {
           {selectedItem || placeholder}
         </span>
       </Button>
+
+      {isDropDownVisible && (
+        <div
+          className="select-container-background absolute-center"
+          onClick={onClickOutSide}
+          style={{
+            top: window.scrollY,
+          }}
+        />
+      )}
       <nav
         className={`select-container__dropdown ${
           isDropDownVisible ? "show-select-menu" : ""
