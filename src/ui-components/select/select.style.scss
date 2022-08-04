@@ -2,6 +2,7 @@
 
 .select-container {
   position: relative;
+  z-index: 2;
 
   .select-container__menu-trigger {
     width: 250px;
@@ -28,6 +29,14 @@
     span {
       font-size: 14px;
     }
+  }
+
+  .select-container-background {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    top: 0;
   }
 
   .select-container__dropdown {
